@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='css/inputStyle.css') }}" media="screen"/>
+      <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
+   </head>
+   <div class="contain">
+      <div class="navBar">
+         <ul>
+            <li><a href="/" class="active">Input</a></li>
+            <li><a href="/result">Result</a></li>
+         </ul>
+      </div>
+      <div class="wrapper">
+         <img src="/static/BrandSafway_logo_color.jpg" style="padding-bottom:0"></img>
+         <body>
+            <div class="form",id="content" style="padding-top:0">
+               <h1 id="h3try">Product Acquisition System</h3>
+               <form action = "http://localhost:5000/result" method = "POST" enctype="multipart/form-data">
+                  <p class="full-width">
+                     <label for="BranchName" name="BranchName">Branch Name</label>
+                     <input list="BranchNames" name="BranchName" id="BranchName" class="textInput">
+                     <datalist id="BranchNames">
+                        {% for branch in branches %}
+                           <option>{{branch}}</option>>
+                        {% endfor %}
+                     </datalist>
+                  </p>
+                  <p class="full-width">
+                     <label for="ShipTo" name="ShipTo">Ship to Yard</label>
+                     <input list="YardNumbers" name="ShipTo" id="ShipTo" class="textInput">
+                     <datalist id="YardNumbers">
+                        {% for yard in yards %}
+                           <option>{{yard}}</option>>
+                        {% endfor %}
+                     </datalist>
+                  </p>
+                  <button type="button" onclick="revealAdvancedSearch()">Advanced Search</button>
+                  <div id="AdvancedSearch" class="full-width">
+                     <button type="button" onclick="excludeMore()">Exclude More Branches</button>
+                     <div id="branchBlacklist" class="full-width">
+                        <div id="branchBlacklistInput" class="full-width blacklist">
+                           <p>
+                              <label for="excludebranch1">Branches to Exclude</label>
+                              <input type="list" list="BranchNames" name="excludebranch1" id="excludebranch1" class="textInput">
+                           </p>
+                           <p>
+                              <br>
+                              <label for="excludeAllBranch1"><input type="checkbox" id="excludeAllBranch1" name="excludeAllBranch1"/>Exclude All</label>
+                              <label for="excludeSomeBranch1"><input type="checkbox" id="excludeSomeBranch1" name="excludeSomeBranch1" onclick="revealItemSearch('excludeSomeBranch','Branch','1')" />Exclude by Part</label>
+                           </p>
+                           <button type="button" id="branchExcludeMoreItems1" class="restictMoreItemsButton" style="display:none" onclick="extendLimitList(1)">Exclude More Items</button>
+                        </div>
+                        <div id="BranchPartExclude1" class="full-width skuEntry" style="display:none">
+                           <p>
+                              <label for ="BranchPartExclude1.SKU1" class="SKU">SKU</label>
+                              <input list="items" id="BranchPartExclude1.SKU1" name="BranchPartExclude1.SKU1" class="textInput" />
+                           </p>
+                           <p>
+                              <label for = "BranchPartExclude1.Qty1", class="Qty">Quantity Needed</label>
+                              <input type ="text", id ="BranchPartExclude1.Qty1" name="BranchPartExclude1.Qty1" class="textInput"/>
+                           </p>
+                        </div>
+                     </div>
+                  </div>
+                  <p></p>
+                  <hr class="full-width">
+                  <input type="file" name="bominputfile" id="bominputfile"></input>
+                  <div id="bomInput" class="full-width">
+                     <p id="skuEntry">
+                        <label for ="SKU1",class="SKU" id="skulabel">SKU</label>
+                        <input list="items" id="SKU1" name="SKU1" class="textInput" />
+                        <datalist id="items">
+                           {% for item in items %}
+                              <option>{{item}}</option>>
+                           {% endfor %}
+                        </datalist>
+                     </p>
+                     <p id="QtyEntry">
+                        <label for = "Qty1", class="Qty" id="qtylabel">Quantity Needed</label>
+                        <input type ="text", id ="Qty1" name="Qty1" class="textInput"/>
+                     </p>
+                     <p>
+                        <label for ="SKU2",class="SKU" id="skulabel">SKU</label>
+                        <input list="items" id="SKU2" name="SKU2" class="textInput" />
+                     </p>
+                     <p>
+                        <label for = "Qty2", class="Qty" id="qtylabel">Quantity Needed</label>
+                        <input type ="text", id ="Qty2" name="Qty2" class="textInput"/>
+                     </p>
+                     <p>
+                        <label for ="SKU3",class="SKU" id="skulabel">SKU</label>
+                        <input list="items" id="SKU3" name="SKU3" class="textInput" />
+                     </p>
+                     <p>
+                        <label for = "Qty3", class="Qty" id="qtylabel">Quantity Needed</label>
+                        <input type ="text", id ="Qty3" name="Qty3" class="textInput"/>
+                     </p>
+                     <p>
+                        <label for ="SKU4",class="SKU" id="skulabel">SKU</label>
+                        <input list="items" id="SKU4" name="SKU4" class="textInput"/>
+                     </p>
+                     <p>
+                        <label for = "Qty4", class="Qty" id="qtylabel">Quantity Needed</label>
+                        <input type ="text", id ="Qty4" name="Qty4" class="textInput"/>
+                     </p>
+                  </div>
+                  <button id="AddInputs" onclick="appendSKU()" type="button">Add Inputs</button>
+                  <p class="full-width">
+                     <button onclick="$('#loading').show();">Submit</button>
+                  </p>
+               </form>
+               <div id="loading" style="display:none;"><img src="{{ url_for('static',filename='duck2.gif') }}" alt="" /></div>
+            </div>
+         </div>
+      </body>
+      <script type="text/javascript" src="{{ url_for('static',filename='script.js') }}"></script>
+   </div>
+</html>

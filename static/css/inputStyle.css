@@ -1,0 +1,253 @@
+* {
+    box-sizing: border-box;
+}
+body {
+    padding: 1rem;
+    padding-top:0;
+    border-top:0;
+}
+
+h3 {
+    color: red;
+}
+
+.active {
+    background-color:#8a2a2b;
+}
+
+
+.resultsTable {
+    grid-area: resTab;
+    justify-self: center;
+    align-self: start;
+}
+
+#truck {
+    grid-area: truckIm;
+    justify-self: center;
+    align-self: top;
+}
+
+#cart {
+    grid-area: cartIm;
+    justify-self: center;
+    align-self: top;
+}
+
+#logCost {
+    grid-area: logCost;
+    justify-self: center;
+    align-self: center;
+}
+
+#capEx {
+    grid-area: capEx;
+    justify-self: center;
+    align-self: center;
+}
+
+#totCost {
+    grid-area: totCost;
+    justify-self: center;
+    align-self: center;
+}
+
+#header {
+    grid-area: head;
+    justify-self: start;
+    align-self: start;
+}
+
+#money {
+    grid-area: money;
+    justify-self: center;
+    align-self: center;
+}
+
+.resultsContainer {
+    display: grid;
+    grid-template-areas:
+    'head head truckIm cartIm money'
+    'resTab resTab logCost capEx totCost'
+    'resTab resTab . . .'
+    'resTab resTab . . .'
+    'resTab resTab . . .';
+    /*grid-gap: 20px;*/
+}
+
+
+.form {
+  position: relative;
+  /*-webkit-animation-name: animatebottom;*/
+  /*-webkit-animation-duration: 1s;*/
+  /*animation-name: animatebottom;*/
+  /*animation-duration: 1s*/
+}
+
+#ExcludePart1Search {
+    /*display: none;*/
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 20px;
+}
+
+#AdvancedSearch {
+    display: none;
+}
+
+
+.contain {
+    max-width: 1170px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 1em;
+    padding-top:0;
+}
+
+.textInput:focus {
+    width: 100%;
+    border: 1px solid #000;
+}
+
+.textInput, button {
+    width: 100%;
+    border: 1px solid #000;
+    padding: 1em;
+}
+
+form {
+    display: grid;
+    grid-template-columns: : 1fr 1fr;
+    grid-gap: 20px;
+}
+
+#bomInput, .skuEntry {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 20px;
+}
+
+
+
+.blacklist {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-gap: 10px;
+}
+
+/*#blacklist, #branchBlacklist > * {
+    justify-content:flex-end;
+    align-content: flex-end;
+*/}
+
+#modelInputs {
+    display: grid;
+    grid-template-rows: 1fr 1fr 1fr;
+    grid-gap: 10px;
+}
+
+form label {
+    display: block;
+}
+form p {
+    margin: 0;
+}
+
+.full-width {
+    grid-column: 1 / 3;
+}
+
+.wrapper {
+    box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.2);
+    padding-bottom: 20px;
+}
+
+.wrapper > * {
+    padding: 1em;
+}
+
+button {
+    background: lightgrey   ;
+    width: 100%;
+    border: 0;
+}
+
+.restictMoreItemsButton {
+    width: 50%;
+    height: 50%;
+    align-self: center;
+    justify-content: center;
+    padding: 0px;
+/*display:none;*/
+}
+
+button:hover, button:focus {
+    background: gold;
+    outline:: 0;
+}
+
+table {
+    color: #333;
+    font-family: Helvetica, Arial, sans-serif;
+    width: 600px;
+    border-collapse:collapse; border-spacing: 0;
+}
+
+td, th {
+    border: 1px solid transparent; /* No more visible border */
+    height: 30px;
+    transition: all 0.3s;  /* Simple transition for hover effect */
+}
+
+th {
+    background: #DFDFDF;  /* Darken header a bit */
+    font-weight: bold;
+    text-align: center;
+}
+
+td {
+    background: #FAFAFA;
+    text-align: center;
+}
+
+/* Cells in even rows (2,4,6...) are one color */
+tr:nth-child(even) td { background: #F1F1F1; }
+
+/* Cells in odd rows (1,3,5...) are another (excludes header cells)  */
+tr:nth-child(odd) td { background: #FEFEFE; }
+
+hr {
+  border: 0;
+  clear:both;
+  display:block;
+  width: 96%;
+  background-color:#8a2a2b;
+  height: 2px;
+}
+
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #333;
+}
+
+li {
+  float: left;
+}
+
+li a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+li a:hover {
+  background-color: #111;
+}
+
+tr td:hover { background: #666; color: #FFF; }
+/* Hover cell effect!
+
